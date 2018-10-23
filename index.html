@@ -8,18 +8,22 @@
 </head>
 <body>
 <p><span id="day"></span> &nbsp;天</p>
+<p><span id="hour"></span> &nbsp;小时</p>
 <script>
   var oneDay = 24 * 60 * 60 * 1000;
-  var firstDate = new Date(2012, 10, 20);
+  var oneHour = 60 * 60 * 1000;
+  var firstDate = new Date('2012-10-20T00:00:00');
   function getTime() {
     var secondDate = new Date();
     return secondDate.getTime()- firstDate.getTime();
   }
 
   function timer() {
-    var diffDays = Math.round(Math.abs((getTime()) / (oneDay)));
-    var dayElement = document.getElementById("day");
-    dayElement.innerText = diffDays;
+    var diffDays = Math.round((getTime()) / (oneDay));
+    var diffHour = Math.round((getTime()) / (oneHour));
+
+    document.getElementById("day").innerText = diffDays;
+    document.getElementById("hour").innerText = diffHour;
 
     setTimeout(timer, 1000);
   }
