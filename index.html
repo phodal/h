@@ -1,0 +1,30 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Huang & Hu</title>
+</head>
+<body>
+<p><span id="day"></span> &nbsp;天</p>
+<script>
+  var oneDay = 24 * 60 * 60 * 1000;
+  var firstDate = new Date(2012, 10, 20);
+  function getTime() {
+    var secondDate = new Date();
+    return secondDate.getTime()- firstDate.getTime();
+  }
+
+  function timer() {
+    var diffDays = Math.round(Math.abs((getTime()) / (oneDay)));
+    var dayElement = document.getElementById("day");
+    dayElement.innerText = diffDays;
+
+    setTimeout(timer, 1000);
+  }
+
+  timer();
+</script>
+</body>
+</html>
